@@ -1,0 +1,16 @@
+server:
+  port: 8082
+  servlet:
+    context-path: /api/vehicle-parking-service
+spring:
+  application:
+    name: vehicle-parking-service
+  cloud:
+    discovery:
+      enabled: true
+  config:
+    import: optional:configserver:http://localhost:8888
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
