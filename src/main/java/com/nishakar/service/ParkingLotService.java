@@ -3,6 +3,7 @@ package com.nishakar.service;
 import com.nishakar.entity.ParkingLot;
 import com.nishakar.records.ParkingLotRequests;
 import com.nishakar.repository.ParkingLotRepository;
+import jakarta.ws.rs.NotFoundException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -29,6 +30,11 @@ public class ParkingLotService {
     public List<ParkingLot> getParkingLots(){
         log.info("ParkingLotService -> getParkingLots !");
         return (List<ParkingLot>) parkingLotRepository.findAll();
+    }
+
+    public ParkingLot getParkingLotById(Integer id){
+        log.info("ParkingLotService -> getParkingLotById !");
+        return parkingLotRepository.findById(id).orElseThrow(() -> new NotFoundException("Parking Lot not found with id : " + id));
     }
 
     public Integer deleteParkingLot(Integer parkingLotId){

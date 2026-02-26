@@ -8,7 +8,6 @@ import lombok.*;
 
 @EqualsAndHashCode(callSuper = true)
 @Builder
-@ToString
 @Data
 @Entity
 @NoArgsConstructor
@@ -30,5 +29,6 @@ public class Vehicle extends BaseEntity{
     @ManyToOne
     @JoinColumn(name = "parking_lot_id")
     @JsonBackReference
+    @ToString.Exclude  // ← prevents circular toString()
     private ParkingLot parkingLot;
 }

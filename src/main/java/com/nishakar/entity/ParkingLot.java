@@ -9,7 +9,6 @@ import java.util.List;
 
 @EqualsAndHashCode(callSuper = true)
 @Builder
-@ToString
 @Data
 @Entity
 @NoArgsConstructor

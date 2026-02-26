@@ -33,9 +33,9 @@ public class VehicleController {
     }
 
     @DeleteMapping("/delete/vehicle/{id}")
-    public String deleteVehicleParked(@PathVariable Integer id) {
+    public void deleteVehicleParked(@PathVariable Integer id) {
         log.info("VehicleController -> deleteVehicleParked !");
-        return vehicleService.deleteParkedVehicle(id);
+        vehicleService.deleteParkedVehicle(id);
     }
 
 }

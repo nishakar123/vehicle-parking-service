@@ -32,6 +32,12 @@ public class ParkingLotController {
         return parkingLotMapper.toParkingLotListResponse(parkingLotService.getParkingLots());
     }
 
+    @GetMapping("/parking-lot/find-by-id/{lotId}")
+    public ParkingLotResponse getParkingLotById(@PathVariable Integer lotId){
+        log.info("ParkingLotService - getParkingLotById !");
+        return parkingLotMapper.toParkingLotResponse(parkingLotService.getParkingLotById(lotId));
+    }
+
     @DeleteMapping("/parking-lot/delete/{id}")
     public Integer deleteParkingLot(@PathVariable Integer id){
         log.info("ParkingLotService - deleteParkingLot !");

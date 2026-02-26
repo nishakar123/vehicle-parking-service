@@ -30,6 +30,7 @@ public class VehicleService {
                 .findFirst()
                 .orElseThrow(() -> new IllegalArgumentException("No parking lot with id " + vehicleParkingRequest.parkingLotId()));
         Vehicle vehicle = Vehicle.builder()
+                .id(vehicleParkingRequest.id())
                 .name(vehicleParkingRequest.name())
                 .plateNumber(vehicleParkingRequest.plateNumber())
                 .vehicleType(VehicleType.valueOf(vehicleParkingRequest.vehicleType()))
@@ -58,10 +59,9 @@ public class VehicleService {
         return vehicleRepository.findAll();
     }
 
-    public String deleteParkedVehicle(Integer id) {
+    public void deleteParkedVehicle(Integer id) {
         log.info("VehicleService -> deleteParkedVehicle");
         final Vehicle vehicle = vehicleRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("No vehicle with id " + id));
         vehicleRepository.delete(vehicle);
-        return "Vehicle has been deleted";
     }
 }
